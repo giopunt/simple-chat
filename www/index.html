@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <title>Post a message!</title>
+        <link href="/css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <section class="unit">
+          <h1>Post a message!</h1>
+          <form name="f_message" id="f_message" onsubmit="postMessage();return false;">
+            <textarea id="message" name="message"></textarea>
+            <input type="submit" value="Post it!" id="s_message" onclick="postMessage();return false;"/>
+          </form>
+          <ul id="messages">
+          </ul>
+        </section>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+
+        	function init() {
+
+        	    // connect to the socket server
+        	    window.socket = io.connect('http://127.0.0.1');
+              var ul = document.getElementById('messages');
+
+              //on connect
+              socket.on('connect', function () {
+              });
+
+              // client disconnect handler
+              socket.on('disconnect', function () {
+                console.log('client disconnected: ' + socket.id);
+              });
+
+              socket.on('message', function (msg) {
+                  var li = document.createElement("li");
+                  li.textContent = msg;
+                  ul.appendChild(li)
+                  console.log('server: '+ msg);
+              });
+
+        	}
+
+          function postMessage(){
+            event.preventDefault();
+
+            var msg = document.getElementById('message').value;
+            socket.send(msg);
+            document.getElementById('message').value = '';
+            return false;
+          }
+        	window.addEventListener('DOMContentLoaded', init);
+
+        </script>
+    </body>
+
+</html>

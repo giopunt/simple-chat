@@ -1,0 +1,33 @@
+* {margin:0;padding:0;font-family:Helvetica,Arial, sans-serif;}
+body {background-color:#fff;}
+h1 {color: #1abc9c;margin:30px 0 10px;}
+.unit {max-width:60em;margin:0 auto;padding-left:20px;}
+textarea{max-width:300px;width:90%;height:100px;display:block;border:1px solid #1abc9c;}
+input[type=submit]{
+  background:#1abc9c;
+  border:0;
+  width:100px;
+  height:30px;
+  color:#fff;
+  margin:20px 0;
+  appearance:none;
+  -moz-appearance:none; /* Firefox */
+  -webkit-appearance:none; /* Safari and Chrome */
+  border-radius: 0px;
+}
+ul#messages{
+  list-style: none;
+}
+
+ul#messages li{
+  max-width:300px;width:90%;
+  height:30px;
+  color: #fff;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  padding:7px 10px;
+}
+
+ul#messages li:nth-child(odd) {background-color: #1dbc9c;}
+ul#messages li:nth-child(even){background-color: #16a085;}
